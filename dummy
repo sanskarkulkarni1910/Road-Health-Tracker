@@ -1,0 +1,40 @@
+<div class="modal fade" id="myModal2">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!--modal content-->
+            <div class="modal-header">
+                <h5>Insert Image Here</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <!--Modal content-->
+            <div class="modal-body">
+                <form>
+                    <h6 class="text">Upload Image here </h6>
+                    <input type="file" id="uploadfile" name="uploadfile" style="border:darkgrey 2px solid;"
+                        class="form-control" required>
+                    <br><br>
+                    <input type="submit" onclick="upload_prfimg(document.getElementById('uploadfile').value)"
+                        value="Upload">
+            </div>
+            <script>
+                function upload_prfimg(img) {
+                    alert(img);
+                    // Send an AJAX request to update the status of the row with the given ID
+                    $.ajax({
+                        type: "POST",
+                        url: "partials/upload_prfimg.php",
+                        data: { img: img },
+                        success: function (result) {
+                            // Refresh the page after the status has been updated
+                            location.reload();
+                        }
+                    });
+                }
+            </script>
+            <!--Modal Footer-->
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
